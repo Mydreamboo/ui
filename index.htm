@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My Dream Boo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- App Shell -->
+    <div class="app-container">
+        <!-- Main App Content -->
+        <main class="app-content">
+            <!-- Screens (only one visible at a time) -->
+            <section id="screen-discover" class="screen active">
+                <div class="screen-header">
+                    <button class="icon-btn" id="ai-btn"><i class="fas fa-robot"></i></button>
+                    <div class="logo-small">My Dream Boo</div>
+                    <button class="icon-btn" id="filter-btn"><i class="fas fa-sliders-h"></i></button>
+                </div>
+
+                <div class="match-card-container">
+                    <div class="match-card">
+                        <!-- Photo carousel for horizontal swiping -->
+                        <div class="photo-carousel">
+                            <div class="carousel-inner">
+                                <!-- Multiple photos for this profile -->
+                                <div class="carousel-item active">
+                                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500&q=80"
+                                        alt="Jessica 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500&q=80"
+                                        alt="Jessica 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=500&q=80"
+                                        alt="Jessica 3">
+                                </div>
+                            </div>
+
+                            <!-- Photo navigation indicators -->
+                            <div class="carousel-indicators">
+                                <span class="indicator active"></span>
+                                <span class="indicator"></span>
+                                <span class="indicator"></span>
+                            </div>
+
+                            <!-- Overlay buttons positioned on left and right sides -->
+                            <div class="action-overlays">
+                                <button class="overlay-btn dislike-overlay">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="overlay-btn like-overlay">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Scrollable profile section with white background -->
+                        <div class="profile-section">
+                            <div class="profile-header">
+                                <div class="profile-main-info">
+                                    <div class="match-name">Jessica, 26</div>
+                                    <div class="match-bio-short">Photographer • 3 miles away</div>
+                                </div>
+                                <button class="favorite-btn">
+                                    <i class="fas fa-star"></i>
+                                </button>
+                            </div>
+
+                            <div class="profile-scrollable">
+                                <div class="match-tags">
+                                    <span class="tag">Travel</span>
+                                    <span class="tag">Photography</span>
+                                    <span class="tag">Art</span>
+                                    <span class="tag">Hiking</span>
+                                    <span class="tag">Music</span>
+                                </div>
+
+                                <div class="profile-section-title">About me</div>
+                                <p class="profile-text">Hey there! I'm a professional photographer with a passion for
+                                    capturing beautiful moments. When I'm not behind the camera, you can find me
+                                    exploring hiking trails or checking out local art galleries.</p>
+
+                                <div class="profile-section-title">Interests</div>
+                                <p class="profile-text">Photography, hiking, traveling to new places, discovering local
+                                    art scenes, live music, and trying new cuisines.</p>
+
+                                <div class="profile-section-title">Looking for</div>
+                                <p class="profile-text">Someone who appreciates art and nature. Bonus points if you know
+                                    the best hiking spots or can recommend a good indie band!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="screen-matches" class="screen">
+                <div class="screen-header">
+                    <div class="empty-space"></div>
+                    <div class="logo-small">Matches</div>
+                    <button class="icon-btn"><i class="fas fa-sliders-h"></i></button>
+                </div>
+
+                <div class="segment-control">
+                    <button class="segment-btn active">Matches</button>
+                    <button class="segment-btn">Messages</button>
+                </div>
+
+                <div class="matches-container">
+                    <!-- MATCHES VIEW -->
+                    <div class="matches-view active">
+                        <div class="matches-title">New Matches</div>
+                        <div class="matches-grid">
+                            <!-- Match items -->
+                            <div class="match-grid-item">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&q=80"
+                                    class="match-grid-photo" alt="Match">
+                                <div class="match-grid-info">
+                                    <div class="match-grid-name">Sophia, 24</div>
+                                    <div class="match-grid-status">Matched today</div>
+                                </div>
+                            </div>
+
+                            <div class="match-grid-item">
+                                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=500&q=80"
+                                    class="match-grid-photo" alt="Match">
+                                <div class="match-grid-info">
+                                    <div class="match-grid-name">Michael, 28</div>
+                                    <div class="match-grid-status">Matched today</div>
+                                </div>
+                            </div>
+
+                            <!-- Add more match items as needed -->
+                        </div>
+
+                        <div class="matches-title">Messages</div>
+                        <div class="message-list">
+                            <!-- Message items -->
+                            <div class="message-item">
+                                <div class="message-photo">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&q=80"
+                                        alt="Sophia">
+                                    <div class="message-online-indicator"></div>
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-name">Sophia</div>
+                                    <div class="message-preview">Hey, how's your day going?</div>
+                                </div>
+                                <div class="message-time">12:34 PM</div>
+                            </div>
+
+                            <div class="message-item">
+                                <div class="message-photo">
+                                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=500&q=80"
+                                        alt="Michael">
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-name">Michael</div>
+                                    <div class="message-preview">That concert was amazing!</div>
+                                </div>
+                                <div class="message-time">Yesterday</div>
+                            </div>
+
+                            <!-- Add more message items as needed -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="screen-chat" class="screen">
+                <div class="screen-header chat-header">
+                    <button class="back-btn"><i class="fas fa-arrow-left"></i></button>
+                    <div class="chat-user">
+                        <div class="chat-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80"
+                                alt="Sarah">
+                        </div>
+                        <div class="chat-name">Sarah</div>
+                    </div>
+                    <button class="icon-btn"><i class="fas fa-ellipsis-v"></i></button>
+                </div>
+
+                <div class="chat-messages">
+                    <div class="message-date">Today</div>
+                    <div class="message received">
+                        <div class="message-content">Hey there! I saw we both like hiking. Have you been to any good
+                            trails lately?</div>
+                        <div class="message-time">10:32 AM</div>
+                    </div>
+                    <div class="message sent">
+                        <div class="message-content">Hi Sarah! Yes, I went to Blue Mountain last weekend. The views were
+                            amazing!</div>
+                        <div class="message-time">10:45 AM</div>
+                    </div>
+                    <div class="message received typing">
+                        <div class="typing-indicator">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <button class="icon-btn"><i class="fas fa-plus-circle"></i></button>
+                    <input type="text" class="chat-input" placeholder="Type a message...">
+                    <button class="icon-btn send-btn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </section>
+
+            <section id="screen-profile" class="screen">
+                <div class="screen-header">
+                    <div class="empty-space"></div>
+                    <div class="logo-small">Profile</div>
+                    <button class="icon-btn"><i class="fas fa-cog"></i></button>
+                </div>
+
+                <div class="profile-container">
+                    <div class="user-profile-header">
+                        <div class="profile-picture-container">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&q=80"
+                                class="profile-picture" alt="Your profile">
+                            <button class="edit-profile-pic">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                        <div class="user-name">Jamie Smith</div>
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">278</div>
+                                <div class="stat-label">Matches</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">42</div>
+                                <div class="stat-label">Likes</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">8</div>
+                                <div class="stat-label">Super Likes</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-sections">
+                        <div class="profile-section-item">
+                            <div class="profile-section-header">
+                                <div class="profile-section-title">Edit Profile</div>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+
+                        <div class="profile-section-item">
+                            <div class="profile-section-header">
+                                <div class="profile-section-title">Preferences</div>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="profile-section-body">
+                                <div class="preferences-list">
+                                    <div class="preference-item">
+                                        <div class="preference-label">Age Range</div>
+                                        <div class="preference-value">24-35</div>
+                                    </div>
+                                    <div class="preference-item">
+                                        <div class="preference-label">Distance</div>
+                                        <div class="preference-value">15 miles</div>
+                                    </div>
+                                    <div class="preference-item">
+                                        <div class="preference-label">Show Me</div>
+                                        <div class="preference-value">Women</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profile-section-item">
+                            <div class="profile-section-header">
+                                <div class="profile-section-title">Settings</div>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="profile-section-body">
+                                <div class="settings-list">
+                                    <div class="setting-item">
+                                        <div class="setting-label">Notifications</div>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox" checked>
+                                            <span class="switch-slider"></span>
+                                        </label>
+                                    </div>
+                                    <div class="setting-item">
+                                        <div class="setting-label">Dark Mode</div>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox" checked>
+                                            <span class="switch-slider"></span>
+                                        </label>
+                                    </div>
+                                    <div class="setting-item">
+                                        <div class="setting-label">Privacy Mode</div>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox">
+                                            <span class="switch-slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-screen="discover">
+                <i class="fas fa-fire"></i>
+                <span>Discover</span>
+            </button>
+            <button class="nav-item" data-screen="matches">
+                <i class="fas fa-heart"></i>
+                <span>Matches</span>
+            </button>
+            <button class="nav-item" data-screen="profile">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </button>
+        </nav>
+
+        <!-- Dialogs (Hidden by default) -->
+        <div class="dialog-overlay" id="login-dialog">
+            <div class="dialog">
+                <button class="close-dialog"><i class="fas fa-times"></i></button>
+                <div class="dialog-header">
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to find your perfect match</p>
+                </div>
+
+                <form class="auth-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" placeholder="Enter your email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" placeholder="Enter your password">
+                        </div>
+                    </div>
+
+                    <div class="forgot-password">
+                        <a href="#" id="forgot-password-link">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Log In</button>
+                </form>
+
+                <div class="social-divider">
+                    <span>Or continue with</span>
+                </div>
+
+                <div class="social-login">
+                    <button class="social-btn google"><i class="fab fa-google"></i></button>
+                    <button class="social-btn facebook"><i class="fab fa-facebook-f"></i></button>
+                    <button class="social-btn twitter"><i class="fab fa-twitter"></i></button>
+                    <button class="social-btn instagram"><i class="fab fa-instagram"></i></button>
+                    <button class="social-btn tiktok"><i class="fab fa-tiktok"></i></button>
+                </div>
+
+                <div class="auth-switch">
+                    Don't have an account? <a href="#" id="switch-to-signup">Sign up</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="dialog-overlay" id="register-dialog">
+            <div class="dialog">
+                <button class="close-dialog"><i class="fas fa-times"></i></button>
+                <div class="dialog-header">
+                    <h2>Create Account</h2>
+                    <p>Join My Dream Boo to find your match</p>
+                </div>
+
+                <form class="auth-form">
+                    <div class="form-group">
+                        <label for="reg-name">Full Name</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="reg-name" placeholder="Enter your name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-email">Email</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="reg-email" placeholder="Enter your email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-password">Password</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="reg-password" placeholder="Create a password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthday">Birthday</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-calendar"></i>
+                            <input type="date" id="birthday">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Create Account</button>
+                </form>
+
+                <div class="social-divider">
+                    <span>Or sign up with</span>
+                </div>
+
+                <div class="social-login">
+                    <button class="social-btn google"><i class="fab fa-google"></i></button>
+                    <button class="social-btn facebook"><i class="fab fa-facebook-f"></i></button>
+                    <button class="social-btn twitter"><i class="fab fa-twitter"></i></button>
+                    <button class="social-btn instagram"><i class="fab fa-instagram"></i></button>
+                    <button class="social-btn tiktok"><i class="fab fa-tiktok"></i></button>
+                </div>
+
+                <div class="auth-switch">
+                    Already have an account? <a href="#" id="switch-to-login">Log in</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="dialog-overlay" id="filter-dialog">
+            <div class="dialog">
+                <button class="close-dialog"><i class="fas fa-times"></i></button>
+                <div class="dialog-header">
+                    <h2>Filter Matches</h2>
+                    <p>Find exactly what you're looking for</p>
+                </div>
+
+                <form class="filter-form">
+                    <div class="form-group">
+                        <label>Age Range</label>
+                        <div class="range-slider-container">
+                            <div class="range-values">
+                                <span id="age-min">18</span> - <span id="age-max">45</span>
+                            </div>
+                            <div class="double-range">
+                                <input type="range" min="18" max="80" value="18" id="age-range-min">
+                                <input type="range" min="18" max="80" value="45" id="age-range-max">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Distance (miles)</label>
+                        <div class="range-slider-container">
+                            <div class="range-value">
+                                <span id="distance-value">25</span> miles
+                            </div>
+                            <input type="range" min="1" max="100" value="25" id="distance-range">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Looking for</label>
+                        <div class="toggle-group">
+                            <button class="toggle-btn active">Women</button>
+                            <button class="toggle-btn">Men</button>
+                            <button class="toggle-btn">Everyone</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Interests</label>
+                        <div class="interest-tags">
+                            <span class="tag active">Travel</span>
+                            <span class="tag">Music</span>
+                            <span class="tag active">Fitness</span>
+                            <span class="tag">Food</span>
+                            <span class="tag">Art</span>
+                            <span class="tag">Gaming</span>
+                            <span class="tag">Movies</span>
+                            <span class="tag active">Outdoors</span>
+                            <span class="tag">Technology</span>
+                        </div>
+                    </div>
+
+                    <div class="filter-actions">
+                        <button type="button" class="btn-secondary">Reset</button>
+                        <button type="submit" class="btn-primary">Apply Filters</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="dialog-overlay" id="forgot-dialog">
+            <div class="dialog">
+                <button class="close-dialog"><i class="fas fa-times"></i></button>
+                <div class="dialog-header">
+                    <h2>Reset Password</h2>
+                    <p>We'll send you a link to reset your password</p>
+                </div>
+
+                <form class="auth-form">
+                    <div class="form-group">
+                        <label for="forgot-email">Email</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="forgot-email" placeholder="Enter your email">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Send Reset Link</button>
+                </form>
+
+                <div class="auth-switch">
+                    <a href="#" id="back-to-login">Back to login</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Dialog -->
+        <div class="dialog-overlay" id="ai-dialog">
+            <div class="dialog">
+                <button class="close-dialog"><i class="fas fa-times"></i></button>
+                <div class="dialog-header">
+                    <h2>AI Suggestions</h2>
+                    <p>Matches curated just for you</p>
+                </div>
+
+                <div class="ai-content">
+                    <div class="ai-insight">
+                        <div class="ai-insight-icon"><i class="fas fa-lightbulb"></i></div>
+                        <p>Based on your activity, Jessica might be your perfect match. You share interests in
+                            photography and travel.</p>
+                    </div>
+
+                    <h3 class="ai-section-title">Recommended Matches</h3>
+
+                    <div class="ai-matches">
+                        <div class="ai-match-item">
+                            <div class="ai-match-photo">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80"
+                                    alt="Sarah">
+                            </div>
+                            <div class="ai-match-details">
+                                <div class="ai-match-name">Sarah, 28</div>
+                                <div class="ai-match-compatibility">95% Match</div>
+                                <div class="ai-match-reason">You both love hiking and photography</div>
+                            </div>
+                        </div>
+
+                        <div class="ai-match-item">
+                            <div class="ai-match-photo">
+                                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=120&q=80"
+                                    alt="Emma">
+                            </div>
+                            <div class="ai-match-details">
+                                <div class="ai-match-name">Emma, 25</div>
+                                <div class="ai-match-compatibility">92% Match</div>
+                                <div class="ai-match-reason">Similar taste in art and music</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+
+</html>
