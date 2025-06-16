@@ -7,6 +7,9 @@
     <title>My Dream Boo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon"
+        href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA/4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEREQAAAAAAEAAAEAAAAAEAAAABAAAAEAAAAAAQAAAQAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAABAAEAAQAAAAAAEAAAAAAAAAAAAAAAAAAAAAEREQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        type="image/x-icon">
 </head>
 
 <body>
@@ -216,20 +219,166 @@
             <section id="screen-profile" class="screen">
                 <div class="screen-header">
                     <div class="empty-space"></div>
+                    <div class="logo-small">Account</div>
+                    <div class="empty-space"></div>
+                </div>
+
+                <div class="auth-container">
+                    <!-- Auth tabs -->
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" data-tab="login">Login</button>
+                        <button class="auth-tab" data-tab="register">Register</button>
+                    </div>
+
+                    <!-- Login form -->
+                    <div class="auth-panel active" id="login-panel">
+                        <div class="auth-form-container">
+                            <div class="welcome-message">
+                                <h2>Welcome Back</h2>
+                                <p>Sign in to find your perfect match</p>
+                            </div>
+
+                            <form class="auth-form" id="login-form">
+                                <div class="form-group">
+                                    <label for="login-email">Email <span class="required-indicator">*</span></label>
+                                    <div class="input-icon-wrapper">
+                                        <i class="fas fa-envelope"></i>
+                                        <input type="email" id="login-email" placeholder="Enter your email" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="login-password">Password <span
+                                            class="required-indicator">*</span></label>
+                                    <div class="input-icon-wrapper">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" id="login-password" placeholder="Enter your password"
+                                            required>
+                                    </div>
+                                </div>
+
+                                <div class="forgot-password">
+                                    <a href="#" id="forgot-password-link">Forgot password?</a>
+                                </div>
+
+                                <button type="submit" class="btn-primary btn-full">Log In</button>
+                            </form>
+
+                            <div class="social-login-section">
+                                <div class="social-divider">
+                                    <span>Or continue with</span>
+                                </div>
+
+                                <div class="social-login">
+                                    <button class="social-btn google"><i class="fab fa-google"></i></button>
+                                    <button class="social-btn facebook"><i class="fab fa-facebook-f"></i></button>
+                                    <button class="social-btn apple"><i class="fab fa-apple"></i></button>
+                                    <button class="social-btn twitter"><i class="fab fa-twitter"></i></button>
+                                </div>
+
+                                <div class="auth-switch">
+                                    Don't have an account? <a href="#" class="app-link" id="switch-to-signup">Sign
+                                        up</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Register form -->
+                    <div class="auth-panel" id="register-panel">
+                        <div class="auth-form-container">
+                            <div class="welcome-message">
+                                <h2>Create Account</h2>
+                                <p>Join My Dream Boo to find your match</p>
+                            </div>
+
+                            <form class="auth-form" id="register-form">
+                                <div class="form-group">
+                                    <label for="reg-email">Email <span class="required-indicator">*</span></label>
+                                    <div class="input-icon-wrapper">
+                                        <i class="fas fa-envelope"></i>
+                                        <input type="email" id="reg-email" placeholder="Enter your email" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="reg-password">Password <span class="required-indicator">*</span></label>
+                                    <div class="input-icon-wrapper">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" id="reg-password" placeholder="At least 6 characters"
+                                            required minlength="6">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="reg-name">Username <span class="required-indicator">*</span></label>
+                                    <div class="input-icon-wrapper">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" id="reg-name" placeholder="Choose a unique username" required
+                                            minlength="3">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="birthday">Birthday <span class="required-indicator">*</span></label>
+                                    <div class="input-icon-wrapper">
+                                        <i class="fas fa-calendar"></i>
+                                        <input type="date" id="birthday" required min="1975-01-01" max="2007-06-14"
+                                            value="1990-01-01">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn-primary btn-full">Create Account</button>
+                            </form>
+
+                            <div class="social-login-section">
+                                <div class="social-divider">
+                                    <span>Or sign up with</span>
+                                </div>
+
+                                <div class="social-login">
+                                    <button class="social-btn google"><i class="fab fa-google"></i></button>
+                                    <button class="social-btn facebook"><i class="fab fa-facebook-f"></i></button>
+                                    <button class="social-btn apple"><i class="fab fa-apple"></i></button>
+                                    <button class="social-btn twitter"><i class="fab fa-twitter"></i></button>
+                                </div>
+
+                                <div class="auth-switch">
+                                    Already have an account? <a href="#" class="app-link" id="switch-to-login">Log
+                                        in</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="screen-user-profile" class="screen">
+                <div class="screen-header">
+                    <div class="empty-space"></div>
                     <div class="logo-small">Profile</div>
-                    <button class="icon-btn"><i class="fas fa-cog"></i></button>
+                    <div class="empty-space"></div>
                 </div>
 
                 <div class="profile-container">
+                    <!-- Profile Header with Avatar -->
                     <div class="user-profile-header">
                         <div class="profile-picture-container">
                             <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&q=80"
-                                class="profile-picture" alt="Your profile">
-                            <button class="edit-profile-pic">
+                                class="profile-picture" id="profile-display-image" alt="Your profile">
+                            <label for="profile-image-upload" class="edit-profile-pic">
                                 <i class="fas fa-camera"></i>
+                            </label>
+                            <input type="file" id="profile-image-upload" accept="image/*" style="display:none">
+                        </div>
+
+                        <div class="editable-name">
+                            <span class="user-name" id="display-name-text">Jamie Smith</span>
+                            <button class="edit-inline-btn" data-field="displayName">
+                                <i class="fas fa-pencil-alt"></i>
                             </button>
                         </div>
-                        <div class="user-name">Jamie Smith</div>
+
                         <div class="profile-stats">
                             <div class="stat-item">
                                 <div class="stat-value">278</div>
@@ -246,65 +395,257 @@
                         </div>
                     </div>
 
-                    <div class="profile-sections">
-                        <div class="profile-section-item">
-                            <div class="profile-section-header">
-                                <div class="profile-section-title">Edit Profile</div>
-                                <i class="fas fa-chevron-right"></i>
+                    <!-- Main Profile Content -->
+                    <div class="profile-content">
+                        <!-- About Me Section (Stays at top) -->
+                        <div class="profile-card">
+                            <div class="profile-card-header">
+                                <h3>About Me</h3>
+                                <button class="edit-section-btn" data-section="about">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
                             </div>
-                        </div>
-
-                        <div class="profile-section-item">
-                            <div class="profile-section-header">
-                                <div class="profile-section-title">Preferences</div>
-                                <i class="fas fa-chevron-down"></i>
+                            <div class="profile-card-body" id="about-section-display">
+                                <p class="profile-bio">Share a little about yourself, your interests, and what you're
+                                    looking for.</p>
                             </div>
-                            <div class="profile-section-body">
-                                <div class="preferences-list">
-                                    <div class="preference-item">
-                                        <div class="preference-label">Age Range</div>
-                                        <div class="preference-value">24-35</div>
-                                    </div>
-                                    <div class="preference-item">
-                                        <div class="preference-label">Distance</div>
-                                        <div class="preference-value">15 miles</div>
-                                    </div>
-                                    <div class="preference-item">
-                                        <div class="preference-label">Show Me</div>
-                                        <div class="preference-value">Women</div>
-                                    </div>
+                            <div class="profile-card-body edit-mode" id="about-section-edit">
+                                <textarea id="bio-input" placeholder="Tell us about yourself..."></textarea>
+                                <div class="edit-actions">
+                                    <button class="btn-secondary cancel-edit" data-section="about">Cancel</button>
+                                    <button class="btn-primary save-edit" data-section="about">Save</button>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="profile-section-item">
-                            <div class="profile-section-header">
-                                <div class="profile-section-title">Settings</div>
-                                <i class="fas fa-chevron-down"></i>
+                        <!-- Dating Preferences (Moved Up) -->
+                        <div class="profile-card">
+                            <div class="profile-card-header">
+                                <h3>Dating Preferences</h3>
+                                <button class="edit-section-btn" data-section="preferences">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
                             </div>
-                            <div class="profile-section-body">
+                            <div class="profile-card-body" id="preferences-section-display">
+                                <div class="detail-item">
+                                    <div class="detail-icon"><i class="fas fa-users"></i></div>
+                                    <div class="detail-content">
+                                        <div class="detail-label">Show Me</div>
+                                        <div class="detail-value" id="show-me-display">Women</div>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-icon"><i class="fas fa-birthday-cake"></i></div>
+                                    <div class="detail-content">
+                                        <div class="detail-label">Age Range</div>
+                                        <div class="detail-value" id="age-range-display">24-35</div>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                    <div class="detail-content">
+                                        <div class="detail-label">Distance</div>
+                                        <div class="detail-value" id="distance-display">15 miles</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-card-body edit-mode" id="preferences-section-edit">
+                                <div class="form-group">
+                                    <label>Show Me</label>
+                                    <div class="toggle-group preference-toggle">
+                                        <button type="button" class="toggle-btn" data-value="women">Women</button>
+                                        <button type="button" class="toggle-btn" data-value="men">Men</button>
+                                        <button type="button" class="toggle-btn active"
+                                            data-value="everyone">Everyone</button>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Age Range</label>
+                                    <div class="range-slider-container">
+                                        <div class="range-values">
+                                            <span id="profile-age-min">24</span> - <span id="profile-age-max">35</span>
+                                        </div>
+                                        <div class="double-range">
+                                            <input type="range" min="18" max="80" value="24" id="profile-age-min-range">
+                                            <input type="range" min="18" max="80" value="35" id="profile-age-max-range">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Distance (miles)</label>
+                                    <div class="range-slider-container">
+                                        <div class="range-value">
+                                            <span id="profile-distance-value">15</span> miles
+                                        </div>
+                                        <input type="range" min="1" max="100" value="15" id="profile-distance-range">
+                                    </div>
+                                </div>
+
+                                <div class="edit-actions">
+                                    <button class="btn-secondary cancel-edit" data-section="preferences">Cancel</button>
+                                    <button class="btn-primary save-edit" data-section="preferences">Save</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Interests Section (Stays in position) -->
+                        <div class="profile-card">
+                            <div class="profile-card-header">
+                                <h3>Interests</h3>
+                                <button class="edit-section-btn" data-section="interests">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+                            </div>
+                            <div class="profile-card-body" id="interests-section-display">
+                                <div class="interests-container">
+                                    <span class="interest-tag">Travel</span>
+                                    <span class="interest-tag">Photography</span>
+                                    <span class="interest-tag">Music</span>
+                                    <span class="interest-tag">Art</span>
+                                </div>
+                            </div>
+                            <div class="profile-card-body edit-mode" id="interests-section-edit">
+                                <div class="interest-selection">
+                                    <div class="interest-option" data-interest="travel">
+                                        <i class="fas fa-plane"></i>
+                                        <span>Travel</span>
+                                    </div>
+                                    <div class="interest-option" data-interest="music">
+                                        <i class="fas fa-music"></i>
+                                        <span>Music</span>
+                                    </div>
+                                    <div class="interest-option" data-interest="fitness">
+                                        <i class="fas fa-dumbbell"></i>
+                                        <span>Fitness</span>
+                                    </div>
+                                    <div class="interest-option" data-interest="food">
+                                        <i class="fas fa-utensils"></i>
+                                        <span>Food</span>
+                                    </div>
+                                    <div class="interest-option" data-interest="art">
+                                        <i class="fas fa-palette"></i>
+                                        <span>Art</span>
+                                    </div>
+                                    <div class="interest-option" data-interest="gaming">
+                                        <i class="fas fa-gamepad"></i>
+                                        <span>Gaming</span>
+                                    </div>
+                                    <div class="interest-option" data-interest="movies">
+                                        <i class="fas fa-film"></i>
+                                        <span>Movies</span>
+                                    </div>
+                                    <div class="interest-option" data-interest="outdoors">
+                                        <i class="fas fa-mountain"></i>
+                                        <span>Outdoors</span>
+                                    </div>
+                                    <div class="interest-option" data-interest="technology">
+                                        <i class="fas fa-laptop-code"></i>
+                                        <span>Technology</span>
+                                    </div>
+                                </div>
+                                <div class="edit-actions">
+                                    <button class="btn-secondary cancel-edit" data-section="interests">Cancel</button>
+                                    <button class="btn-primary save-edit" data-section="interests">Save</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Personal Details Section (Moved Down) -->
+                        <div class="profile-card">
+                            <div class="profile-card-header">
+                                <h3>Personal Details</h3>
+                                <button class="edit-section-btn" data-section="details">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+                            </div>
+                            <div class="profile-card-body" id="details-section-display">
+                                <div class="detail-item">
+                                    <div class="detail-icon"><i class="fas fa-briefcase"></i></div>
+                                    <div class="detail-content">
+                                        <div class="detail-label">Work</div>
+                                        <div class="detail-value" id="job-display">Software Developer</div>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-icon"><i class="fas fa-graduation-cap"></i></div>
+                                    <div class="detail-content">
+                                        <div class="detail-label">Education</div>
+                                        <div class="detail-value" id="education-display">University of Tech</div>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-icon"><i class="fas fa-birthday-cake"></i></div>
+                                    <div class="detail-content">
+                                        <div class="detail-label">Birthday</div>
+                                        <div class="detail-value" id="birthday-display">April 15, 1992</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-card-body edit-mode" id="details-section-edit">
+                                <div class="form-group">
+                                    <label for="job-input">Work</label>
+                                    <div class="input-icon-wrapper">
+                                        <i class="fas fa-briefcase"></i>
+                                        <input type="text" id="job-input" placeholder="Your job title">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="education-input">Education</label>
+                                    <div class="input-icon-wrapper">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        <input type="text" id="education-input" placeholder="Your education">
+                                    </div>
+                                </div>
+                                <div class="edit-actions">
+                                    <button class="btn-secondary cancel-edit" data-section="details">Cancel</button>
+                                    <button class="btn-primary save-edit" data-section="details">Save</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Account Settings & Logout (Stays at bottom) -->
+                        <div class="profile-card">
+                            <div class="profile-card-header">
+                                <h3>Account Settings</h3>
+                            </div>
+                            <div class="profile-card-body">
                                 <div class="settings-list">
                                     <div class="setting-item">
-                                        <div class="setting-label">Notifications</div>
+                                        <div class="setting-content">
+                                            <i class="fas fa-bell"></i>
+                                            <span>Notifications</span>
+                                        </div>
                                         <label class="toggle-switch">
                                             <input type="checkbox" checked>
                                             <span class="switch-slider"></span>
                                         </label>
                                     </div>
                                     <div class="setting-item">
-                                        <div class="setting-label">Dark Mode</div>
+                                        <div class="setting-content">
+                                            <i class="fas fa-moon"></i>
+                                            <span>Dark Mode</span>
+                                        </div>
                                         <label class="toggle-switch">
                                             <input type="checkbox" checked>
                                             <span class="switch-slider"></span>
                                         </label>
                                     </div>
                                     <div class="setting-item">
-                                        <div class="setting-label">Privacy Mode</div>
+                                        <div class="setting-content">
+                                            <i class="fas fa-shield-alt"></i>
+                                            <span>Privacy Mode</span>
+                                        </div>
                                         <label class="toggle-switch">
                                             <input type="checkbox">
                                             <span class="switch-slider"></span>
                                         </label>
                                     </div>
+                                    <button class="logout-button">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <span>Logout</span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -329,119 +670,89 @@
             </button>
         </nav>
 
-        <!-- Dialogs (Hidden by default) -->
-        <div class="dialog-overlay" id="login-dialog">
+        <!-- Forgot Password Dialog -->
+        <div class="dialog-overlay" id="forgot-password-dialog">
             <div class="dialog">
                 <button class="close-dialog"><i class="fas fa-times"></i></button>
                 <div class="dialog-header">
-                    <h2>Welcome Back</h2>
-                    <p>Sign in to find your perfect match</p>
+                    <h2>Reset Password</h2>
+                    <p>We'll send you a link to reset your password</p>
                 </div>
 
-                <form class="auth-form">
+                <form class="auth-form" id="forgot-password-form">
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="forgot-email">Email <span class="required-indicator">*</span></label>
                         <div class="input-icon-wrapper">
                             <i class="fas fa-envelope"></i>
-                            <input type="email" id="email" placeholder="Enter your email">
+                            <input type="email" id="forgot-email" placeholder="Enter your email" required>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <div class="input-icon-wrapper">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" id="password" placeholder="Enter your password">
-                        </div>
-                    </div>
+                    <button type="submit" class="btn-primary btn-full">Send Reset Link</button>
 
-                    <div class="forgot-password">
-                        <a href="#" id="forgot-password-link">Forgot password?</a>
+                    <div class="auth-switch" style="margin-top: 20px; text-align: center;">
+                        <a href="#" id="back-to-login" class="app-link">Back to login</a>
                     </div>
-
-                    <button type="submit" class="btn-primary">Log In</button>
                 </form>
-
-                <div class="social-divider">
-                    <span>Or continue with</span>
-                </div>
-
-                <div class="social-login">
-                    <button class="social-btn google"><i class="fab fa-google"></i></button>
-                    <button class="social-btn facebook"><i class="fab fa-facebook-f"></i></button>
-                    <button class="social-btn twitter"><i class="fab fa-twitter"></i></button>
-                    <button class="social-btn instagram"><i class="fab fa-instagram"></i></button>
-                    <button class="social-btn tiktok"><i class="fab fa-tiktok"></i></button>
-                </div>
-
-                <div class="auth-switch">
-                    Don't have an account? <a href="#" id="switch-to-signup">Sign up</a>
-                </div>
             </div>
         </div>
 
-        <div class="dialog-overlay" id="register-dialog">
+        <!-- Verification Code Dialog -->
+        <div class="dialog-overlay" id="verification-code-dialog">
             <div class="dialog">
                 <button class="close-dialog"><i class="fas fa-times"></i></button>
                 <div class="dialog-header">
-                    <h2>Create Account</h2>
-                    <p>Join My Dream Boo to find your match</p>
+                    <h2>Verify Your Email</h2>
+                    <p>Please enter the verification code sent to your email</p>
                 </div>
 
-                <form class="auth-form">
+                <form class="auth-form" id="verification-code-form">
+                    <input type="hidden" id="verification-email">
                     <div class="form-group">
-                        <label for="reg-name">Full Name</label>
+                        <label for="verification-code">Verification Code <span
+                                class="required-indicator">*</span></label>
                         <div class="input-icon-wrapper">
-                            <i class="fas fa-user"></i>
-                            <input type="text" id="reg-name" placeholder="Enter your name">
+                            <i class="fas fa-key"></i>
+                            <input type="text" id="verification-code" placeholder="Enter verification code" required
+                                autocomplete="off" style="text-transform: uppercase; letter-spacing: 2px;">
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="reg-email">Email</label>
-                        <div class="input-icon-wrapper">
-                            <i class="fas fa-envelope"></i>
-                            <input type="email" id="reg-email" placeholder="Enter your email">
-                        </div>
-                    </div>
+                    <button type="submit" class="btn-primary btn-full">Verify Email</button>
 
-                    <div class="form-group">
-                        <label for="reg-password">Password</label>
-                        <div class="input-icon-wrapper">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" id="reg-password" placeholder="Create a password">
-                        </div>
+                    <div class="auth-switch" style="margin-top: 20px; text-align: center;">
+                        <a href="#" id="resend-verification" class="app-link">Resend verification code</a>
                     </div>
-
-                    <div class="form-group">
-                        <label for="birthday">Birthday</label>
-                        <div class="input-icon-wrapper">
-                            <i class="fas fa-calendar"></i>
-                            <input type="date" id="birthday">
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn-primary">Create Account</button>
                 </form>
-
-                <div class="social-divider">
-                    <span>Or sign up with</span>
-                </div>
-
-                <div class="social-login">
-                    <button class="social-btn google"><i class="fab fa-google"></i></button>
-                    <button class="social-btn facebook"><i class="fab fa-facebook-f"></i></button>
-                    <button class="social-btn twitter"><i class="fab fa-twitter"></i></button>
-                    <button class="social-btn instagram"><i class="fab fa-instagram"></i></button>
-                    <button class="social-btn tiktok"><i class="fab fa-tiktok"></i></button>
-                </div>
-
-                <div class="auth-switch">
-                    Already have an account? <a href="#" id="switch-to-login">Log in</a>
-                </div>
             </div>
         </div>
 
+        <!-- Reset Code Dialog -->
+        <div class="dialog-overlay" id="reset-code-dialog">
+            <div class="dialog">
+                <button class="close-dialog"><i class="fas fa-times"></i></button>
+                <div class="dialog-header">
+                    <h2>Enter Reset Code</h2>
+                    <p>Please enter the code sent to your email</p>
+                </div>
+
+                <form class="auth-form" id="reset-code-form">
+                    <input type="hidden" id="reset-email">
+                    <div class="form-group">
+                        <label for="reset-code">Reset Code <span class="required-indicator">*</span></label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-key"></i>
+                            <input type="text" id="reset-code" placeholder="Enter reset code" required
+                                autocomplete="off" style="text-transform: uppercase; letter-spacing: 2px;">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-full">Continue</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Filter Dialog -->
         <div class="dialog-overlay" id="filter-dialog">
             <div class="dialog">
                 <button class="close-dialog"><i class="fas fa-times"></i></button>
@@ -506,32 +817,6 @@
             </div>
         </div>
 
-        <div class="dialog-overlay" id="forgot-dialog">
-            <div class="dialog">
-                <button class="close-dialog"><i class="fas fa-times"></i></button>
-                <div class="dialog-header">
-                    <h2>Reset Password</h2>
-                    <p>We'll send you a link to reset your password</p>
-                </div>
-
-                <form class="auth-form">
-                    <div class="form-group">
-                        <label for="forgot-email">Email</label>
-                        <div class="input-icon-wrapper">
-                            <i class="fas fa-envelope"></i>
-                            <input type="email" id="forgot-email" placeholder="Enter your email">
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn-primary">Send Reset Link</button>
-                </form>
-
-                <div class="auth-switch">
-                    <a href="#" id="back-to-login">Back to login</a>
-                </div>
-            </div>
-        </div>
-
         <!-- AI Dialog -->
         <div class="dialog-overlay" id="ai-dialog">
             <div class="dialog">
@@ -578,10 +863,265 @@
                 </div>
             </div>
         </div>
+
+        <!-- Email Verification Success Notification (hidden by default) -->
+        <div class="dialog-overlay" id="verification-success-dialog">
+            <div class="dialog">
+                <button class="close-dialog"><i class="fas fa-times"></i></button>
+                <div class="dialog-header">
+                    <h2>Email Verified</h2>
+                </div>
+                <div style="text-align: center; padding: 20px 0;">
+                    <div style="font-size: 48px; color: #00d084; margin-bottom: 20px;">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <p>Your email has been successfully verified!</p>
+                    <p>You can now log in to your account.</p>
+                    <button class="btn-primary btn-full" style="margin-top: 20px;" id="goto-login-btn">Go to
+                        Login</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reset Password Dialog (shown after clicking link in email) -->
+        <div class="dialog-overlay" id="reset-password-dialog">
+            <div class="dialog">
+                <button class="close-dialog"><i class="fas fa-times"></i></button>
+                <div class="dialog-header">
+                    <h2>Create New Password</h2>
+                    <p>Please enter your new password</p>
+                </div>
+
+                <form class="auth-form" id="reset-password-form">
+                    <input type="hidden" id="reset-token">
+                    <div class="form-group">
+                        <label for="new-password">New Password <span class="required-indicator">*</span></label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="new-password" placeholder="At least 6 characters" required
+                                minlength="6">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password <span class="required-indicator">*</span></label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="confirm-password" placeholder="Confirm your new password"
+                                required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-full">Reset Password</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Edit Profile Dialog -->
+        <div class="dialog-overlay" id="edit-profile-dialog">
+            <div class="dialog">
+                <button class="close-dialog"><i class="fas fa-times"></i></button>
+                <div class="dialog-header">
+                    <h2>Edit Profile</h2>
+                    <p>Update your personal details</p>
+                </div>
+
+                <form class="profile-edit-form" id="profile-edit-form">
+                    <div class="profile-picture-edit">
+                        <div class="profile-picture-preview">
+                            <img id="profile-picture-preview"
+                                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80"
+                                alt="Profile">
+                        </div>
+                        <label for="profile-picture-upload" class="btn-secondary upload-btn">
+                            <i class="fas fa-camera"></i> Change Photo
+                        </label>
+                        <input type="file" id="profile-picture-upload" accept="image/*" style="display:none">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-display-name">Display Name</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="edit-display-name" placeholder="Your display name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-bio">Bio</label>
+                        <textarea id="edit-bio" rows="3" placeholder="Tell us about yourself"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Interests</label>
+                        <div class="interest-tags">
+                            <span class="tag" data-interest="travel">Travel</span>
+                            <span class="tag" data-interest="music">Music</span>
+                            <span class="tag" data-interest="fitness">Fitness</span>
+                            <span class="tag" data-interest="food">Food</span>
+                            <span class="tag" data-interest="art">Art</span>
+                            <span class="tag" data-interest="gaming">Gaming</span>
+                            <span class="tag" data-interest="movies">Movies</span>
+                            <span class="tag" data-interest="outdoors">Outdoors</span>
+                            <span class="tag" data-interest="technology">Technology</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-job-title">Job Title</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-briefcase"></i>
+                            <input type="text" id="edit-job-title" placeholder="Your job title">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-education">Education</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-graduation-cap"></i>
+                            <input type="text" id="edit-education" placeholder="Your education">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-full">Save Changes</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Edit Preferences Dialog -->
+        <div class="dialog-overlay" id="edit-preferences-dialog">
+            <div class="dialog">
+                <button class="close-dialog"><i class="fas fa-times"></i></button>
+                <div class="dialog-header">
+                    <h2>Dating Preferences</h2>
+                    <p>Customize your match criteria</p>
+                </div>
+
+                <form class="preferences-form" id="preferences-form">
+                    <div class="form-group">
+                        <label>Age Range</label>
+                        <div class="range-slider-container">
+                            <div class="range-values">
+                                <span id="pref-age-min">24</span> - <span id="pref-age-max">35</span>
+                            </div>
+                            <div class="double-range">
+                                <input type="range" min="18" max="80" value="24" id="pref-age-min-range">
+                                <input type="range" min="18" max="80" value="35" id="pref-age-max-range">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Distance (miles)</label>
+                        <div class="range-slider-container">
+                            <div class="range-value">
+                                <span id="pref-distance-value">15</span> miles
+                            </div>
+                            <input type="range" min="1" max="100" value="15" id="pref-distance-range">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Show Me</label>
+                        <div class="toggle-group">
+                            <button type="button" class="toggle-btn" data-value="women">Women</button>
+                            <button type="button" class="toggle-btn" data-value="men">Men</button>
+                            <button type="button" class="toggle-btn active" data-value="everyone">Everyone</button>
+                        </div>
+                        <input type="hidden" id="show-me-preference" value="everyone">
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-full">Save Preferences</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Toast notification container -->
+        <div id="toast-container"></div>
     </div>
 
     <!-- Scripts -->
     <script src="js/app.js"></script>
+    <script>
+        // Check URL for token parameters (email verification or password reset)
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const verifyToken = urlParams.get('token');
+            const resetToken = urlParams.get('reset');
+
+            if (verifyToken) {
+                // Remove token from URL to prevent reuse
+                window.history.replaceState({}, document.title, window.location.pathname);
+
+                // Verify email with the token
+                fetch(`${API_URL}/api/verify?token=${verifyToken}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.message) {
+                            // Show success dialog
+                            document.getElementById('verification-success-dialog').classList.add('active');
+                        }
+                    })
+                    .catch(error => {
+                        showToast('Email verification failed. Please try again.', 'error');
+                    });
+            }
+
+            if (resetToken) {
+                // Remove token from URL to prevent reuse
+                window.history.replaceState({}, document.title, window.location.pathname);
+
+                // Show reset password form and populate hidden token field
+                document.getElementById('reset-token').value = resetToken;
+                document.getElementById('reset-password-dialog').classList.add('active');
+            }
+
+            // Add click handler for verification success dialog button
+            document.getElementById('goto-login-btn').addEventListener('click', function () {
+                document.getElementById('verification-success-dialog').classList.remove('active');
+
+                // Switch to login tab
+                document.querySelector('.auth-tab[data-tab="login"]').click();
+            });
+
+            // Add submit handler for password reset form
+            document.getElementById('reset-password-form').addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const newPassword = document.getElementById('new-password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+                const token = document.getElementById('reset-token').value;
+
+                // Check if passwords match
+                if (newPassword !== confirmPassword) {
+                    showToast('Passwords do not match', 'error');
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`${API_URL}/api/reset-password`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ token, newPassword })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        showToast('Password reset successful! You can now log in.', 'success');
+                        document.getElementById('reset-password-dialog').classList.remove('active');
+
+                        // Switch to login tab
+                        document.querySelector('.auth-tab[data-tab="login"]').click();
+                    } else {
+                        throw new Error(data.error || 'Failed to reset password');
+                    }
+                } catch (error) {
+                    showToast(error.message || 'Password reset failed. Please try again.', 'error');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
