@@ -27,77 +27,7 @@
 
                 <div class="match-card-container">
                     <div class="match-card">
-                        <!-- Photo carousel for horizontal swiping -->
-                        <div class="photo-carousel">
-                            <div class="carousel-inner">
-                                <!-- Multiple photos for this profile -->
-                                <div class="carousel-item active">
-                                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500&q=80"
-                                        alt="Jessica 1">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500&q=80"
-                                        alt="Jessica 2">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=500&q=80"
-                                        alt="Jessica 3">
-                                </div>
-                            </div>
-
-                            <!-- Photo navigation indicators -->
-                            <div class="carousel-indicators">
-                                <span class="indicator active"></span>
-                                <span class="indicator"></span>
-                                <span class="indicator"></span>
-                            </div>
-
-                            <!-- Overlay buttons positioned on left and right sides -->
-                            <div class="action-overlays">
-                                <button class="overlay-btn dislike-overlay">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                                <button class="overlay-btn like-overlay">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Scrollable profile section with white background -->
-                        <div class="profile-section">
-                            <div class="profile-header">
-                                <div class="profile-main-info">
-                                    <div class="match-name">Jessica, 26</div>
-                                    <div class="match-bio-short">Photographer • 3 miles away</div>
-                                </div>
-                                <button class="favorite-btn">
-                                    <i class="fas fa-star"></i>
-                                </button>
-                            </div>
-
-                            <div class="profile-scrollable">
-                                <div class="match-tags">
-                                    <span class="tag">Travel</span>
-                                    <span class="tag">Photography</span>
-                                    <span class="tag">Art</span>
-                                    <span class="tag">Hiking</span>
-                                    <span class="tag">Music</span>
-                                </div>
-
-                                <div class="profile-section-title">About me</div>
-                                <p class="profile-text">Hey there! I'm a professional photographer with a passion for
-                                    capturing beautiful moments. When I'm not behind the camera, you can find me
-                                    exploring hiking trails or checking out local art galleries.</p>
-
-                                <div class="profile-section-title">Interests</div>
-                                <p class="profile-text">Photography, hiking, traveling to new places, discovering local
-                                    art scenes, live music, and trying new cuisines.</p>
-
-                                <div class="profile-section-title">Looking for</div>
-                                <p class="profile-text">Someone who appreciates art and nature. Bonus points if you know
-                                    the best hiking spots or can recommend a good indie band!</p>
-                            </div>
-                        </div>
+                        Loading...
                     </div>
                 </div>
             </section>
@@ -766,7 +696,7 @@
                         <label>Age Range</label>
                         <div class="range-slider-container">
                             <div class="range-values">
-                                <span id="age-min">18</span> - <span id="age-max">45</span>
+                                <span id="age-min">18</span> <span id="age-max">45</span>
                             </div>
                             <div class="double-range">
                                 <input type="range" min="18" max="80" value="18" id="age-range-min">
@@ -779,7 +709,7 @@
                         <label>Distance (miles)</label>
                         <div class="range-slider-container">
                             <div class="range-value">
-                                <span id="distance-value">25</span> miles
+                                <span id="distance-value">25</span>&nbsp;miles
                             </div>
                             <input type="range" min="1" max="100" value="25" id="distance-range">
                         </div>
@@ -788,9 +718,9 @@
                     <div class="form-group">
                         <label>Looking for</label>
                         <div class="toggle-group">
-                            <button class="toggle-btn active">Women</button>
-                            <button class="toggle-btn">Men</button>
-                            <button class="toggle-btn">Everyone</button>
+                            <button type="button" class="toggle-btn active">Women</button>
+                            <button type="button" class="toggle-btn">Men</button>
+                            <button type="button" class="toggle-btn">Everyone</button>
                         </div>
                     </div>
 
@@ -1041,6 +971,83 @@
     </div>
 
     <!-- Scripts -->
+    <script>
+        // Debug script loading
+        console.log("Page loading started");
+
+        // Track loaded scripts
+        window.scriptsLoaded = {
+            dummyData: false,
+            matchingAlgorithm: false,
+            app: false
+        };
+
+        // Listen for script loading events
+        document.addEventListener('dummyProfilesLoaded', function () {
+            console.log("Dummy profiles event received");
+            window.scriptsLoaded.dummyData = true;
+        });
+
+        document.addEventListener('matchingAlgorithmLoaded', function () {
+            console.log("Matching algorithm event received");
+            window.scriptsLoaded.matchingAlgorithm = true;
+        });
+
+        // Function to ensure all dependencies are loaded
+        function ensureDependenciesLoaded(callback, maxAttempts = 5) {
+            let attempts = 0;
+
+            function checkDependencies() {
+                if (typeof window.dummyProfiles !== 'undefined' &&
+                    typeof window.MatchingAlgorithm !== 'undefined') {
+                    console.log("All dependencies verified loaded");
+                    callback();
+                    return true;
+                }
+
+                attempts++;
+                if (attempts >= maxAttempts) {
+                    console.error("Failed to load dependencies after multiple attempts");
+                    return false;
+                }
+
+                console.log(`Waiting for dependencies... (attempt ${attempts})`);
+                setTimeout(checkDependencies, 200);
+                return false;
+            }
+
+            checkDependencies();
+        }
+    </script>
+
+    <script src="js/dummy-data.js"></script>
+    <script src="js/matching-algorithm.js"></script>
+    <script>
+        // Check script loading status after a short delay
+        setTimeout(function () {
+            console.log("Checking script loading status:");
+            console.log("- Dummy Profiles:", typeof window.dummyProfiles !== 'undefined' ? 'Loaded ✅' : 'Failed ❌');
+            console.log("- Matching Algorithm:", typeof window.MatchingAlgorithm !== 'undefined' ? 'Loaded ✅' : 'Failed ❌');
+
+            // Force reload any missing dependencies
+            if (!window.dummyProfiles || !window.MatchingAlgorithm) {
+                console.warn("Some dependencies failed to load, attempting to reload...");
+
+                if (!window.dummyProfiles) {
+                    const script = document.createElement('script');
+                    script.src = 'js/dummy-data.js?' + new Date().getTime(); // Add timestamp to avoid caching
+                    document.head.appendChild(script);
+                }
+
+                if (!window.MatchingAlgorithm) {
+                    const script = document.createElement('script');
+                    script.src = 'js/matching-algorithm.js?' + new Date().getTime(); // Add timestamp to avoid caching
+                    document.head.appendChild(script);
+                }
+            }
+        }, 1000);
+    </script>
+
     <script src="js/app.js"></script>
     <script>
         // Check URL for token parameters (email verification or password reset)
@@ -1060,6 +1067,8 @@
                         if (data.message) {
                             // Show success dialog
                             document.getElementById('verification-success-dialog').classList.add('active');
+                        } else {
+                            showToast(data.error || 'Email verification failed.', 'error');
                         }
                     })
                     .catch(error => {

@@ -127,7 +127,7 @@ body {
     left: 0;
     right: 0;
     z-index: 10;
-    height: 64px;
+    height: 56px;
     /* Slightly taller header */
     padding-top: env(safe-area-inset-top);
 }
@@ -199,42 +199,69 @@ body {
 /* Update match card container to account for slightly taller header */
 .match-card-container {
     flex: 1;
-    padding: 0 16px;
+    padding: 0 8px;
+    /* less horizontal padding */
     margin: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    height: calc(100% - 64px);
-    /* Updated to match taller header */
+    justify-content: flex-start;
+    /* start higher up */
+    height: calc(100% - 56px);
+    /* reduce height to bring card up */
     position: relative;
-    top: 64px;
-    /* Updated to match taller header */
     overflow: hidden;
+    perspective: 1000px;
+    padding-top: 56px;
+    /* Add this line to push content below the header */
 }
 
-/* Update match card height */
+/* 1. Ensure match card starts below header and doesn't overlap */
+.match-card-container {
+    top: 6px;
+    /* matches .screen-header height */
+    /* ...other properties unchanged... */
+}
+
+/* 2. Make only the profile details area scrollable */
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Ensure it fills the card */
+}
+
+.profile-scrollable {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 10px 16px 18px;
+}
+
+/* 3. Prevent card from being too high */
 .match-card {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 124px);
-    /* Updated for taller header */
-    max-height: calc(100vh - 124px);
-    /* Enforce maximum height */
+    min-height: 0;
+    /* <-- This is critical for flexbox scrolling */
+    margin-top: 0;
+    height: calc(100vh - 110px);
+    max-height: calc(100vh - 110px);
     width: 100%;
     position: relative;
     overflow: hidden;
     border-radius: var(--border-radius-lg);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     background-color: white;
-    margin-bottom: 60px;
-    /* Create space for footer */
+    transition: opacity 0.3s ease, transform 0.2s ease-out;
+    will-change: transform, opacity;
+    z-index: 10;
 }
 
 /* Adjust photo carousel height */
 .photo-carousel {
     position: relative;
-    height: 58%;
-    /* Slightly reduced from 60% */
+    height: 52%;
+    /* was 58% */
     overflow: hidden;
     background-color: #000;
     border-top-left-radius: var(--border-radius-lg);
@@ -479,24 +506,25 @@ body {
 }
 
 .profile-scrollable {
-    flex: 1;
+    flex: 1 1 auto;
+    min-height: 0;
     overflow-y: auto;
-    padding: 15px 20px 25px;
-    /* Added bottom padding */
+    padding: 10px 16px 18px;
 }
 
 /* Profile content styling */
 .profile-section-title {
     font-size: 1.1rem;
     font-weight: 600;
-    margin: 16px 0 8px;
+    margin: 0 0 6px;
+    /* was 16px 0 8px */
     color: #ff3e91;
     /* Lighter pink for white background */
 }
 
 .profile-text {
     color: #555;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     line-height: 1.5;
     font-size: 0.95rem;
 }
@@ -815,7 +843,7 @@ body {
 .filter-actions {
     display: flex;
     gap: 12px;
-    margin-top: 25px;
+    margin-top: 5px;
 }
 
 .btn-primary,
@@ -982,8 +1010,8 @@ body {
     }
 
     .match-card-container {
-        padding-top: 0;
-        /* Remove this padding */
+        padding-top: 64px;
+        /* Match the desktop header height */
     }
 }
 
@@ -2059,100 +2087,303 @@ input:checked+.switch-slider:before {
     background: rgba(255, 255, 255, 0.5);
 }
 
-/* Add these toast notification styles at the end of your stylesheet */
+/* === SWIPE ANIMATIONS === */
+/* Swipe animation effects - already defined earlier, no need to duplicate */
+@keyframes swipeRight {
+    0% {
+        transform: translateX(0) rotate(0);
+        opacity: 1;
+    }
 
-/* Toast container */
-#toast-container {
-    position: fixed;
+    30% {
+        transform: translateX(30%) rotate(5deg);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translateX(150%) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+@keyframes swipeLeft {
+    0% {
+        transform: translateX(0) rotate(0);
+        opacity: 1;
+    }
+
+    30% {
+        transform: translateX(-30%) rotate(-5deg);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translateX(-150%) rotate(-25deg);
+        opacity: 0;
+    }
+}
+
+.match-card.swiping-right {
+    animation: swipeRight 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    pointer-events: none;
+}
+
+.match-card.swiping-left {
+    animation: swipeLeft 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    pointer-events: none;
+}
+
+/* Heart and X animations */
+.heart-burst {
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 9999;
+    width: 200px;
+    height: 200px;
+    z-index: 20;
     pointer-events: none;
-    width: 100%;
-    max-width: 400px;
+    opacity: 0;
+    transform-origin: center center;
+}
+
+.heart-burst.animate {
+    animation: heartBurst 0.8s cubic-bezier(.17, .67, .83, .67) forwards;
+}
+
+@keyframes heartBurst {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+
+    15% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+    }
+
+    30% {
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    70% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(10);
+        opacity: 0;
+    }
+}
+
+.x-mark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    z-index: 20;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.x-mark.animate {
+    animation: xMark 0.8s cubic-bezier(.17, .67, .83, .67) forwards;
+}
+
+@keyframes xMark {
+    0% {
+        transform: translate(-50%, -50%) scale(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        transform: translate(-50%, -50%) scale(1.2) rotate(15deg);
+        opacity: 1;
+    }
+
+    30% {
+        transform: translate(-50%, -50%) scale(0.9) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(-50%, -50%) scale(1.1) rotate(-15deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(8) rotate(0deg);
+        opacity: 0;
+    }
+}
+
+/* Touch gesture styles */
+.match-card {
+    touch-action: pan-y;
+    user-select: none;
+    transform-origin: center center;
+    transition: transform 0.1s ease-out;
+}
+
+.match-card.dragging {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    transition: none;
+}
+
+/* Swipe overlay container */
+.swipe-overlay-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    pointer-events: none;
+    z-index: 50;
 }
 
-/* Toast notification base styling */
-.toast {
+/* Swipe indicator appearance */
+.swipe-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Shine effect for heart and X animations */
+.heart-burst i,
+.x-mark i {
+    text-shadow: 0 0 20px currentColor;
+    filter: drop-shadow(0 0 10px currentColor);
+}
+
+/* Match card container position */
+.match-card-container {
     position: relative;
-    padding: 16px 20px;
-    border-radius: 12px;
-    margin: 10px auto;
-    width: 80%;
+    overflow: hidden;
+    perspective: 1000px;
+    padding-top: 56px;
+    /* Keep this */
+    /* REMOVE or comment out the next line if present: */
+    /* top: 56px; */
+}
+
+/* Add these styles for smoother transitions */
+.match-card {
+    transition: opacity 0.3s ease, transform 0.1s ease-out;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.match-card-container {
+    perspective: 1000px;
+}
+
+/* Improved swipe animations */
+@keyframes swipeRight {
+    0% {
+        transform: translateX(0) rotate(0);
+        opacity: 1;
+    }
+
+    30% {
+        transform: translateX(30%) rotate(5deg);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translateX(150%) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+@keyframes swipeLeft {
+    0% {
+        transform: translateX(0) rotate(0);
+        opacity: 1;
+    }
+
+    30% {
+        transform: translateX(-30%) rotate(-5deg);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translateX(-150%) rotate(-25deg);
+        opacity: 0;
+    }
+}
+
+.match-card.swiping-right {
+    animation: swipeRight 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    pointer-events: none;
+}
+
+.match-card.swiping-left {
+    animation: swipeLeft 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    pointer-events: none;
+}
+
+/* New card fade-in */
+.match-card.new-card {
+    transition: opacity 0.3s ease;
+}
+
+/* === Add Toast Notification Styles === */
+#toast-container {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    width: 100%;
     max-width: 320px;
-    text-align: center;
+    padding: 0 16px;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+.toast {
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     font-weight: 500;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    font-size: 14px;
+    text-align: center;
     opacity: 0;
     transform: translateY(20px) scale(0.9);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    pointer-events: auto;
-    color: white;
-    font-size: 0.95rem;
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    word-wrap: break-word;
+    backdrop-filter: blur(10px);
 }
 
-/* Show animation */
 .toast.show {
     opacity: 1;
     transform: translateY(0) scale(1);
 }
 
-/* Toast types */
 .toast-success {
-    background: rgba(46, 213, 115, 0.95);
-    border-left: 5px solid #2ed573;
+    border-left: 4px solid #2ED573;
 }
 
 .toast-error {
-    background: rgba(255, 71, 87, 0.95);
-    border-left: 5px solid #ff4757;
-}
-
-.toast-warning {
-    background: rgba(255, 165, 2, 0.95);
-    border-left: 5px solid #ffa502;
+    border-left: 4px solid #FF4757;
 }
 
 .toast-info {
-    background: rgba(24, 144, 255, 0.95);
-    border-left: 5px solid #1890ff;
+    border-left: 4px solid #1E90FF;
 }
 
-/* Add icon to toast messages */
-.toast::before {
-    content: '';
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    margin-right: 10px;
-}
-
-.toast-success::before {
-    content: '\f058';
-    /* check-circle */
-    color: white;
-}
-
-.toast-error::before {
-    content: '\f057';
-    /* times-circle */
-    color: white;
-}
-
-.toast-warning::before {
-    content: '\f071';
-    /* exclamation-triangle */
-    color: white;
-}
-
-.toast-info::before {
-    content: '\f05a';
-    /* info-circle */
-    color: white;
+.toast-warning {
+    border-left: 4px solid #FFC312;
 }
